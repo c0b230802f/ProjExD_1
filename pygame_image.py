@@ -16,22 +16,24 @@ def main():
     kk_rct = kt_img.get_rect()  # 練習８-１（こうかとんRectを抽出）
     kk_rct.center =  300, 200  # 練習８-２（中心座標の設定）
     tmr = 0
+    dx = 1
+    dy = 0
     
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()
-        kk_rct.move_ip([-1, 0])
+        kk_rct.move_ip([-dx, dy])
         # print(key_lst)
         if key_lst[pg.K_UP]:
             # print("上押された")
-            kk_rct.move_ip([0, -1])
+            dy = -1
         if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip([0, +1])            
+            dy = 1            
         if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip([-1, 0])            
+            dx = 1           
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip([+2, 0])
+            dx = -2
         x = tmr % 3200
         screen.blit(bg_img, [-x, 0])
         screen.blit(bg_imgs, [-x+1600, 0])
